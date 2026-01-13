@@ -101,10 +101,46 @@ The whole purpose of this project is to have a reliable template generator. If P
 
 ### Generation Test Procedure
 
+#### Handling Existing Test Directories
+
+**Important**: If a test directory already exists from a previous test, you must handle it before running a new test to ensure a clean slate.
+
+**Recommended Approach (Option 1): Delete and Recreate**
+```bash
+# Remove existing test directory completely
+rm -rf /Users/matthewtrump/Developer/react-vite-skeleton-test
+
+# This ensures:
+# - No leftover files from previous tests
+# - Clean npm install (no cached node_modules)
+# - Accurate comparison to reference implementation
+# - Repeatable test results
+```
+
+**Alternative Approaches:**
+
+*Option 2: Timestamped Directories*
+```bash
+# Create uniquely named directory with timestamp
+mkdir react-vite-skeleton-test-$(date +%Y%m%d-%H%M%S)
+# Pros: Keep multiple test runs for comparison
+# Cons: Takes up more disk space, need to track which is latest
+```
+
+*Option 3: Manual Decision*
+- Check if directory exists first
+- Prompt user to decide: delete, keep and abort, or use timestamp
+- Useful for comparing test runs side-by-side
+
+**For Automated Tests**: Always use Option 1 (delete and recreate) to ensure consistency.
+
 #### Setup Test Environment
 
 ```bash
-# Create a test directory (outside this repo)
+# Clean up any existing test directory (recommended)
+rm -rf /Users/matthewtrump/Developer/react-vite-skeleton-test
+
+# Create a fresh test directory (outside this repo)
 cd ..
 mkdir react-vite-skeleton-test
 cd react-vite-skeleton-test
@@ -114,6 +150,8 @@ cp ../react-vite-skeleton/PROMPT.md .
 ```
 
 #### Generate Fresh App
+
+**Manual Approach:**
 
 1. Start a new Claude Code session in the test directory
 2. Give Claude this instruction:
@@ -128,6 +166,31 @@ cp ../react-vite-skeleton/PROMPT.md .
    cp .env.example .env
    npm run dev
    ```
+
+**Automated Approach (Recommended):**
+
+Stay in the main repo directory and tell Claude Code:
+```
+Run a generation test
+```
+
+Claude will automatically:
+1. Delete existing test directory (if present)
+2. Create fresh test directory
+3. Copy PROMPT.md
+4. Generate complete app
+5. Run npm install, build, and start dev server
+6. Compare to reference implementation
+7. Update GENERATION_TEST_LOG.md with results
+8. Report pass/fail with details
+
+This approach ensures:
+- Clean slate every time (no leftover files)
+- Single-session execution (no manual steps)
+- Automatic logging of results
+- Comparison with reference implementation
+
+**Note**: The automated approach will clean up the test directory before starting, implementing Option 1 (delete and recreate) automatically.
 
 #### Verify Generation Success
 
