@@ -59,7 +59,7 @@ Establish a minimal, classy aesthetic:
 - **Typography**: Clean, readable font stack (Inter, system fonts). Load Inter via Google Fonts CDN in index.html
 - **Spacing**: Consistent spacing scale using Tailwind
 - **Components**: Minimal shadows, subtle borders, understated hover states
-- **Dark Mode Ready**: Structure CSS for easy dark mode addition later
+- **Dark Mode Ready**: Structure CSS for easy dark mode addition later (Note: Settings page includes dark mode dropdown as placeholder, but functionality not yet implemented. See FUTURE_FEATURES.md)
 
 ### 5. API Integration Layer
 Create a service layer ready for FastAPI:
@@ -96,7 +96,7 @@ Create reusable, styled components:
 - Card component
 - Loading spinner
 - Error message display
-- Modal/Dialog (basic)
+- Modal/Dialog (optional - can be added later, see FUTURE_FEATURES.md)
 
 ### 8. State Management Approach
 Use React Context for global state (auth, theme, etc.), with:
@@ -200,3 +200,4 @@ The application should:
 - Build successfully with `npm run build` (no TypeScript errors)
 - Look polished even with placeholder content
 - Have all FastAPI integration points clearly marked with comments
+- Include FUTURE_FEATURES.md file documenting any placeholder features (dark mode toggle, modal component, etc.)

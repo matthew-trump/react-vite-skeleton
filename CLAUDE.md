@@ -149,6 +149,40 @@ src/
 - **Mobile menu**: Header component manages mobile menu state internally. Close on navigation is handled in each Link's onClick.
 - **Protected routes**: Always check `isLoading` before checking `isAuthenticated` to avoid flash of redirect during initialization.
 
+## Placeholder Features
+
+Some UI elements are placeholders and not yet functional. See `FUTURE_FEATURES.md` for details.
+
+**Notable placeholders**:
+- **Dark mode toggle** in Settings page - UI exists but not connected to theme system
+- **Two-factor authentication** in Profile page - Shows "Enable" button but not implemented
+- **Modal/Dialog component** - Listed in original spec but not yet created
+
+When implementing these features, update `FUTURE_FEATURES.md` by moving items to the "Completed Features" section.
+
+## Documentation Files
+
+- **README.md** - Setup instructions and FastAPI integration guide
+- **CLAUDE.md** - This file, architecture reference for Claude Code sessions
+- **PROMPT.md** - Generation template for creating fresh instances of this skeleton
+- **TESTING.md** - Testing strategy with two testing loops (feature testing and generation testing)
+- **GENERATION_TEST_LOG.md** - Audit trail of generation tests
+- **FUTURE_FEATURES.md** - Planned features and placeholders
+
+## Testing & Generation Workflow
+
+This project serves as both a working app AND a generation template:
+
+1. **Feature Testing**: Test the current implementation (see `TESTING.md` Testing Loop 1)
+2. **Generation Testing**: Test that `PROMPT.md` can generate a fresh working app (see `TESTING.md` Testing Loop 2)
+3. **Keep in sync**: When adding features, update both code AND `PROMPT.md`, then run generation test
+
+**Important**: After significant changes, always:
+- Update `CLAUDE.md` if architecture changes
+- Update `PROMPT.md` if generation template needs changes
+- Run generation test to verify `PROMPT.md` still works
+- Update `GENERATION_TEST_LOG.md` with test results
+
 ## Customization
 
 **Colors**: Edit `tailwind.config.js` primary color palette
