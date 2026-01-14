@@ -1,0 +1,24 @@
+# Git and version control
+.git/
+
+# Dependencies and build artifacts
+node_modules/
+dist/
+build/
+.vite/
+
+# Boilerplate-specific files
+PROMPT.md
+scripts/generate-test-app.sh
+scripts/spawn-custom-app.sh
+.spawn-exclude
+
+# Test directories
+../react-vite-skeleton-test/
+
+# Optional: OS/IDE files if not in .gitignore
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
